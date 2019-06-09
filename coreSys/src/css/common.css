@@ -1,0 +1,35 @@
+body, p, ul, ol{
+	padding:0; margin:0;
+}
+ul, ol{
+	list-style:none;	
+}
+a{
+	text-decoration:none;
+}
+b{
+	font-weight:normal; display:inline-block;
+}
+i{
+	font-style:normal; display:inline-block;
+}
+
+/*清除浮动*/
+.cf:after{
+	content:""; display:block; clear:both;
+} 
+
+/*左浮动*/
+.fl{
+	float:left;	
+}
+
+/*右浮动*/
+.fr{
+	float:right;	
+}
+
+/*设置border-box*/
+.bs{
+	box-sizing:border-box;
+}
