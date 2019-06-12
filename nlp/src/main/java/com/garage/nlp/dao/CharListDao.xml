@@ -2,7 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.garage.nlp.dao.CharListDao">
-    <insert id="addCharRecord" parameterType="">
-
+    <insert id="addCharRecord" parameterType="java.util.Map">
+        insert into char_list (character, foreward, body, afterward, front_combine, after_combine) values
+        <foreach collection="wordVectorListMap" index="key" item="valueList" separator=",">
+            <foreach collection="valueList" item="item" separator=",">
+                (#{key},#{item.foreWard},#{item.body},#{item.afterWard},#{item.frontCombine},
+                #{item.afterCombine})
+            </foreach>
+        </foreach>
+    </insert>
+    <insert id="doWordStatisticsRound1" parameterType="java.util.Map">
+        insert into tb_word_statistics (word_name, word_length, accurrence_times) values
+        <foreach collection="bodyMap" index="key" item="item" separator=",">
+            (#{key}, 1, #{item})
+        </foreach>
+        on duplicate key update
+        accurrence_times = accurrence_times + VALUES(accurrence_times)
     </insert>
 </mapper>

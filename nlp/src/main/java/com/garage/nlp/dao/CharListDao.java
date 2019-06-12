@@ -9,5 +9,9 @@ import java.util.Map;
 
 @Repository
 public interface CharListDao {
+
     int addCharRecord(@Param("wordVectorListMap") Map<String, List<WordVector>> wordVectorListMap);
+
+    int doWordStatisticsRound1(@Param("bodyMap") Map<String, Integer> bodyMap);
+
 }
